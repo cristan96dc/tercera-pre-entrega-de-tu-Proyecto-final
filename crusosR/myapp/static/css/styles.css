@@ -1,0 +1,222 @@
+body {
+    background-color: rgb(34, 33, 33);
+    color: rgb(245, 239, 239); /* Color de texto por defecto */
+    font-family: Arial, sans-serif; /* Fuente del texto */
+    text-align: center; /* Para centrar el contenido */
+}
+
+a {
+    color: rgb(243, 60, 60); /* Color de los enlaces */
+    text-decoration: none; /* Quita el subrayado de los enlaces */
+}
+
+a:hover {
+    color: rgb(104, 104, 99); /* Color del enlace al pasar el ratón sobre él */
+}
+
+input[type="submit"], button {
+    background-color: rgb(243, 60, 60); /* Color de fondo de los botones */
+    color: black; /* Color del texto de los botones */
+    border: none; /* Quita el borde de los botones */
+    padding: 10px 20px; /* Espaciado interno del botón */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+}
+
+input[type="submit"]:hover, button:hover {
+    background-color: rgb(124, 124, 124); /* Color de fondo al pasar el ratón sobre el botón */
+}
+
+select {
+    background-color:rgb(243, 60, 60); /* Color de fondo del menú desplegable */
+    color: black; /* Color del texto del menú desplegable */
+    padding: 5px; /* Espaciado interno del menú desplegable */
+    border: none; /* Quita el borde del menú desplegable */
+}
+
+option {
+    background-color: black; /* Color de fondo de las opciones */
+    color: rgb(252, 134, 134); /* Color del texto de las opciones */
+}
+
+textarea {
+    background-color: black; /* Color de fondo del área de texto */
+    color: rgb(243, 60, 60); /* Color del texto del área de texto */
+}
+
+label {
+    color: rgb(243, 60, 60); /* Color de las etiquetas */
+}
+
+ul {
+    list-style-type: none; /* Quita los estilos de la lista */
+    padding: 0; /* Quita el espacio interno de la lista */
+}
+
+li {
+    padding: 10px 0; /* Espaciado interno de los elementos de la lista */
+    width: 50%; /* Ancho del campo de entrada */
+    margin: 0 auto; /* Centrar el elemento */
+}
+
+
+
+
+/* Estilos adicionales para el diseño */
+.curso {
+    cursor: pointer;
+    margin-bottom: 10px; /* Espaciado entre cursos */
+    position: relative;
+}
+.curso:hover {
+    background-color: #918f8f;
+}
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(44, 43, 43);
+    border: 1px solid #f7f4f4;
+    padding: 20px;
+    z-index: 1000;
+}
+.nombre, .descripcion {
+    font-size: 20px;
+    cursor: pointer; /* Agregar cursor de puntero para indicar que es interactivo */
+}
+.popup p {
+    margin: 5px 0;
+}
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+.close:hover {
+    color: red;
+}
+
+/* Estilos para los botones */
+button, .boton-filtro {
+    border-radius: 20px; /* Hacer los botones redondos */
+    padding: 10px 20px; /* Ajustar el relleno para que los botones sean más grandes */
+    cursor: pointer;
+}
+
+/* Estilo específico para los botones de filtro */
+.boton-filtro {
+    margin-left: 10px; /* Ajustar el espacio entre los botones de filtro */
+    background-color: #007bff; /* Cambiar el color de fondo */
+    color: #6b6868; /* Cambiar el color del texto */
+    border: none; /* Quitar el borde */
+}
+
+.boton-filtro:hover {
+    background-color: #0056b3; /* Cambiar el color de fondo al pasar el cursor */
+}
+
+h1 {
+    text-shadow: 2px 2px 4px rgba(255, 0, 0, 0.5); /* Ajusta el tamaño y el color de la sombra según tus preferencias */
+}
+
+        /* Estilos CSS para centrar los campos de entrada */
+
+
+        .input-container {
+            text-align: center;
+        }
+        
+        .input-container label,
+        .input-container input {
+            display: block;
+            margin: 0 auto;
+            width: 15%; /* Ancho del campo de entrada */
+        }
+        
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        
+        /* Estilos para el contenedor de la lista */
+        .lista-profesores {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+ /* Estilos para cada ítem de la lista */
+.profesor {
+    display: flex;
+    flex-direction: row; /* Cambiado a row para que la imagen esté a la izquierda */
+    align-items: center; /* Alinea verticalmente la imagen y el texto */
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+}
+
+/* Estilos para la imagen del profesor */
+.imagen-profesor {
+    margin-right: 20px; /* Espacio entre la imagen y el texto */
+    width: 100px; /* Ajusta el ancho de la imagen según sea necesario */
+}
+
+/* Estilos para el nombre y apellido del profesor */
+.nombre-apellido {
+    color: rgb(248, 246, 246);
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+/* Estilos para la descripción del profesor */
+.descripcion-profesor {
+    color: rgb(248, 246, 246);
+}
+        
+        
+        .botones {
+            text-align: center;
+        }
+        
+        .botones button {
+            margin: 5px; /* Espacio entre los botones */
+        }
+
+        .navbar {
+            position: fixed; /* Fija la barra de navegación en la pantalla */
+            top: 0; /* Coloca la barra de navegación en la parte superior */
+            right: 0; /* Coloca la barra de navegación en la izquierda */
+            width: 200px; /* Ancho de la barra de navegación */
+            height: 100%; /* Altura de la barra de navegación */
+            background-color: #000000bb; /* Color de fondo */
+            padding: 20px;
+            box-sizing: border-box; /* Incluye el padding y el border en el ancho y alto */
+        }
+        
+        /* Estilos para cada ítem de la lista */
+        .navbar ul {
+            list-style-type: none; /* Elimina los marcadores de lista */
+            padding: 0;
+            margin: 0;
+        }
+        
+        .navbar ul li {
+            position: relative; /* Para que el pseudo-elemento esté posicionado correctamente */
+        }
+        
+        .navbar ul li::after {
+            content: ''; /* Contenido vacío */
+            position: absolute; /* Posiciona el pseudo-elemento */
+            bottom: 0; /* Coloca el pseudo-elemento al final del elemento li */
+            left: 0; /* Alinea el pseudo-elemento a la izquierda */
+            width: 100%; /* Ancho igual al 100% del elemento padre */
+            height: 1px; /* Grosor de la línea */
+            background-color: white; /* Color de la línea */
+        }
+        
+        .linea-separadora {
+            border-bottom: 1px solid #ccc;
+            margin: 10px 0;
+          }
+      

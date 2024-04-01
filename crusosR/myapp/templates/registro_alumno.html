@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <style>
+        /* Estilos CSS para centrar los campos de entrada */
+        form {
+            text-align: center;
+        }
+        form label,
+        form input {
+            display: block;
+            margin: 0 auto;
+            width: 15%; /* Ancho del campo de entrada */
+        }
+    </style>
+    <title>Registro de alumno</title>
+</head>
+<body>
+    <h1>Registro de alumno</h1>
+    <form action="{% url 'registro_alumno' %}" method="post">
+        {% csrf_token %}
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required><br>
+        <label for="apellido">Apellido:</label>
+        <input type="text" id="apellido" name="apellido" required><br>
+        <label for="edad">Edad:</label>
+        <input type="number" id="edad" name="edad" required><br>
+        <label for="username">Nombre de usuario:</label>
+        <input type="text" id="username" name="username" required><br>
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" name="password" required><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br>
+        <input type="submit" value="Registrarse">
+    </form>
+</body>
+</html>

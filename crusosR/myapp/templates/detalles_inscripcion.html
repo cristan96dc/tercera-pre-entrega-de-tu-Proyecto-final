@@ -1,0 +1,36 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+
+    <title>Detalles de Inscripción</title>
+    <style>
+        body {
+            padding: 20px; /* Agrega un espacio alrededor del contenido */
+        }
+        h1, p, form, button {
+            margin-bottom: 20px; /* Aumenta la distancia entre los elementos */
+        }
+    </style>
+</head>
+<body>
+    <h1>Detalles de Inscripción</h1>
+    <p>Nombre de usuario: {{ nombre_usuario }}</p>
+    <p>Curso seleccionado: {{ nombre_curso }}</p>
+    
+    <!-- Botón para guardar la inscripción -->
+    <form action="{% url 'guardar_inscripcion' %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="nombre_usuario" value="{{ nombre_usuario }}">
+        <input type="hidden" name="nombre_curso" value="{{ nombre_curso }}">
+        <input type="submit" value="Guardar inscripción">
+    </form>
+
+    <!-- Botón de inicio -->
+    <a href="/home"><button>Volver a inicio</button></a>
+</body>
+</html>

@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <style>
+        /* Estilos CSS para centrar los campos de entrada */
+        .input-container {
+            text-align: center;
+        }
+        .input-container label,
+        .input-container input {
+            display: block;
+            margin: 0 auto;
+            width: 15%; /* Ancho del campo de entrada */
+        }
+    </style>
+    <title>Iniciar sesión como alumno</title>
+</head>
+<body>
+    <h1>Bienvenido a CursosR</h1>
+    <h2>Iniciar sesión</h2>
+    {% if error_message %}
+        <p>{{ error_message }}</p>
+    {% endif %}
+    <form action="{% url 'login_alumno' %}" method="post">
+        {% csrf_token %}
+        <div class="input-container">
+            <label for="username">Nombre de usuario:</label>
+            <input type="text" id="username" name="username" required><br>
+        </div>
+        <div class="input-container">
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" name="password" required><br>
+        </div>
+        <div class="input-container">
+            <input type="submit" value="Iniciar sesión">
+        </div>
+    </form>
+    <p>¿No tienes una cuenta? <a href="{% url 'registro_alumno' %}">Regístrate aquí</a></p>
+</body>
+</html

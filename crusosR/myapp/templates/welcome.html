@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <title>Bienvenido a Curso R</title>
+    <style>
+    .botones {
+        text-align: center;
+    }
+    
+    .botones button {
+        margin: 5px; /* Espacio entre los botones */
+    }
+</style>
+</head>
+<body>
+    <h1>Bienvenido a Curso R</h1>
+    <p>¡Gracias por unirte a nuestro curso!</p>
+    
+    
+
+    <div class="botones">
+        <a href="/cursos/"><button>Cursos</button></a>
+        <a href="/profe/"><button>Profesores</button></a>
+        <a href="/comentarios_alumno/"><button>Comentarios</button></a>
+        <a href="/perfil/"><button>perfil</button></a>
+
+    </div>
+
+</body>
+</html>

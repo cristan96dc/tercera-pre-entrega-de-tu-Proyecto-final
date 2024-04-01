@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <style>
+        /* Estilos para los comentarios */
+        .tweet-container {
+            border: 1px solid #ccc; /* Borde con grosor de 1px */
+            border-radius: 5px; /* Bordes redondeados */
+            margin-bottom: 10px; /* Incremento de margen inferior */
+            padding: 10px;
+            width: 45%; /* Ancho del campo de entrada */
+        }
+        .tweet-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Alinear elementos al inicio y al final */
+            margin-bottom: 5px;
+        }
+        .tweet-username {
+            font-weight: bold;
+            margin-right: 5px;
+        }
+        .tweet-timestamp {
+            color: #555;
+            font-size: 12px;
+        }
+        .tweet-text {
+            margin-bottom: 5px;
+        }
+        /* Estilos para centrar los comentarios */
+        .comments-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+    <title>Comentarios de Curso R</title>
+</head>
+
+<body>
+    <div class="navbar">
+        <ul>
+            <li><a href="/home">Inicio</a></li>
+            <li><a href="/profe">Profes</a></li>
+            <li><a href="/comentarios_alumno">Contacto</a></li>
+            <li><a href="/perfil">Perfil</a></li>
+        </ul>
+    </div>
+    <h2>Comentarios de Curso R</h2>
+    <form action="{% url 'comentarios_alumno' %}" method="post">
+        {% csrf_token %}
+        <label for="texto">Dejar Comentario:</label><br>
+        <textarea id="texto" name="texto" rows="4" cols="50" required></textarea><br>
+        <input type="submit" value="Enviar">
+    </form>
+    <hr>
+    
+    <ul class="comments-container">
+        {% for comentario in comentarios %}
+            <li class="tweet-container">
+                <div class="tweet-header">
+                    <span class="tweet-username">{{ comentario.alumno.nombre }} {{ comentario.alumno.apellido }}</span>
+                    <span class="tweet-timestamp">{{ comentario.fecha_creacion }}</span>
+                </div>
+                <div class="tweet-text">{{ comentario.texto }}</div>
+                <div class="likes">Likes: {{ comentario.likes.count }}</div>
+                <form action="{% url 'comentarios_alumno' %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="comentario_id" value="{{ comentario.id }}">
+                    <button type="submit" name="like">Like</button>
+                </form>
+            </li>
+        {% empty %}
+            <li>No hay comentarios.</li>
+        {% endfor %}
+    </ul>
+
+
+</body>
+</html>

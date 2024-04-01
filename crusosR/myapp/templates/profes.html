@@ -1,0 +1,69 @@
+                  
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de profesores</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <style>
+        /* Estilos para la barra de navegación */
+        /* Agrega aquí tus estilos si es necesario */
+    </style>
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <div class="navbar">
+        <ul>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/cursos">Cursos</a></li>
+            <li><a href="/comentarios_alumno">Comentarios</a></li>
+            <li><a href="/perfil">Perfil</a></li>
+        </ul>
+    </div>
+
+    <body>
+        <h1>Lista de profesores</h1>
+    
+        <!-- Botones para filtrar por tipo de curso -->
+        <form method="GET" action="">
+            <label for="tipo_curso">Filtrar por tipo de curso:</label>
+            <select name="tipo_curso" id="tipo_curso">
+                <option value="">Todos</option>
+                {% for tipo in tipos_cursos %}
+                    <option value="{{ tipo }}">{{ tipo }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit">Filtrar</button>
+        </form> </button> 
+        
+        <br>
+
+        <!-- Lista de profesores -->
+        <ul class="lista-profesores" id="lista-profesores">
+            {% for profesor in profesores %}
+            <li class="profesor">
+                <!-- Construye la ruta completa utilizando el nombre del archivo -->
+                <img src="{% static 'img/' %}{{ profesor.nombre_imagen }}.png" alt="{{ profesor.nombre }}">
+                <div>
+                    <p class="nombre-apellido">{{ profesor.nombre }} {{ profesor.apellido }}</p>
+                    <p class="descripcion-profesor">{{ profesor.descripcion }}</p>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <script>
+        function aplicarFiltro() {
+            // Obtener el valor seleccionado del menú desplegable
+            var tipoCursoSeleccionado = document.getElementById("tipo_curso").value;
+
+            // Redirigir a la página de lista de profesores con el filtro aplicado
+            window.location.href = "/lista_profesores/?tipo_curso=" + tipoCursoSeleccionado;
+        }
+    </script>
+</body>
+</html>
+ 

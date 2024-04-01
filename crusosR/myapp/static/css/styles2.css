@@ -1,0 +1,70 @@
+body {
+    background-color: rgb(34, 33, 33);
+    color: rgb(245, 239, 239); /* Color de texto por defecto */
+    font-family: Arial, sans-serif; /* Fuente del texto */
+    text-align: center; /* Para centrar el contenido */
+}
+.navbar {
+    position: fixed; /* Fija la barra de navegación en la pantalla */
+    top: 0; /* Coloca la barra de navegación en la parte superior */
+    right: 0; /* Coloca la barra de navegación en la izquierda */
+    width: 200px; /* Ancho de la barra de navegación */
+    height: 100%; /* Altura de la barra de navegación */
+    background-color:rgb(150, 143, 143); /* Color de fondo */
+    padding: 20px;
+    box-sizing: border-box; /* Incluye el padding y el border en el ancho y alto */
+}
+
+/* Estilos para cada ítem de la lista */
+.navbar ul {
+    list-style-type: none; /* Elimina los marcadores de lista */
+    padding: 0;
+    margin: 0;
+}
+
+.navbar ul li {
+    position: relative; /* Para que el pseudo-elemento esté posicionado correctamente */
+}
+
+.navbar ul li::after {
+    content: ''; /* Contenido vacío */
+    position: absolute; /* Posiciona el pseudo-elemento */
+    bottom: 0; /* Coloca el pseudo-elemento al final del elemento li */
+    left: 0; /* Alinea el pseudo-elemento a la izquierda */
+    width: 100%; /* Ancho igual al 100% del elemento padre */
+    height: 1px; /* Grosor de la línea */
+    background-color: rgb(34, 33, 33); /* Color de la línea */
+}
+
+.perfil-container {
+    background-color:rgb(150, 143, 143);
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgb(150, 143, 143);
+}
+.perfil-container h1 {
+    margin-top: 0;
+    font-size: 24px;
+    color: #3b5998;
+}
+.perfil-container h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #3b5998;
+}
+.perfil-container img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+.perfil-container ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.perfil-container ul li {
+    margin-bottom: 10px;
+}

@@ -1,0 +1,124 @@
+{% load static %}
+<!DOCTYPE html> 
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <title>Lista de Cursos</title>
+    <style>
+        .search-filter-bar {
+            display: flex;
+            align-items: center;
+        }
+        
+        .search-filter-bar form,
+        .search-filter-bar button {
+            margin-right: 10px; /* Espacio entre elementos */
+        }
+
+        .filtro-label {
+            display: none; /* Ocultar etiquetas */
+        }
+
+        /* Estilos para los botones Inscribirse */
+        .curso {
+            position: relative;
+        }
+
+        .curso button {
+            position: absolute;
+            right: 0;
+            top: -30px; /* Ajustar la posición vertical */
+            transform: translateY(100%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <!-- Contenido de la barra de navegación -->
+        <ul>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/profe">Profes</a></li>
+            <li><a href="/comentarios_alumno">Comentarios</a></li>
+            <li><a href="/perfil">Perfil</a></li>
+        </ul>
+    </div>
+
+    <h1>Lista de Cursos</h1>
+
+    <!-- Barra de búsqueda y filtros en línea -->
+    <div class="search-filter-bar">
+        <!-- Barra de búsqueda -->
+        <form action="" method="get" id="searchForm">
+            <input type="text" name="search" id="searchInput" placeholder="Buscar curso...">
+            <button type="submit" id="buscarCursos">Buscar</button>
+        </form>
+    
+        <!-- Formulario de filtrado por tipo y años -->
+        <form action="" method="get" class="filtro-form">
+            <select name="tipo" id="tipo">
+                <option value="">Tipo</option>
+                <!-- Opciones de tipo -->
+                {% for tipo in tipos %}
+                    <option value="{{ tipo }}">{{ tipo }}</option>
+                {% endfor %}
+            </select>
+    
+            <select name="años" id="años">
+                <option value="">Años</option>
+                <!-- Opciones de años -->
+                {% for año in años %}
+                    <option value="{{ año }}">{{ año }}</option>
+                {% endfor %}
+            </select>
+    
+            <input type="submit" value="Filtrar" class="filtrar boton-filtro">
+        </form>
+    </div>
+
+    <!-- Popup -->
+    <div id="popup" class="popup">
+        <span class="close">&times;</span>
+        <div id="popupContent"></div>
+    </div>
+    
+    <ul>
+        {% for curso in cursos %}
+        <li class="curso" onclick="mostrarInfoCurso('{{ curso.decribcion }}', '{{ curso.tipo }}', '{{ curso.años }}')">
+            <div>
+                <span class="nombre">{{ curso.nombre }}</span>
+            </div>
+            <div class="linea-separadora"></div>
+            <div class="curso-info">
+                <p><strong>Descripción:</strong> {{ curso.decribcion }}</p>
+                <p><strong>Tipo:</strong> {{ curso.tipo }}</p>
+                <p><strong>Años:</strong> {{ curso.años }}</p>
+            </div>
+            <div class="curso-buttons">
+                <!-- Botón de inscripción redirigiendo a la página de detalles de inscripción -->
+                <button onclick="window.location.href='{% url 'detalles_inscripcion' request.user.username curso.nombre %}'">Inscribirse</button>
+            </div>
+        </li>
+        <hr> <!-- Línea divisoria -->
+        {% endfor %}
+    </ul>
+    <script>
+        function mostrarPopup(nombre, descripcion, tipo, años) {
+            var popup = document.getElementById('popup');
+            var popupContent = document.getElementById('popupContent');
+            popupContent.innerHTML = '<h2>' + nombre + '</h2>' +
+                                     '<p><strong>Descripción:</strong> ' + descripcion + '</p>' +
+                                     '<p><strong>Tipo:</strong> ' + tipo + '</p>' +
+                                     '<p><strong>Años:</strong> ' + años + '</p>';
+            popup.style.display = 'block';
+        }
+
+        // Cerrar el popup al hacer clic en la X
+        document.querySelector('.close').addEventListener('click', function() {
+            document.getElementById('popup').style.display = 'none';
+        });
+    </script>
+</body>
+</html>
